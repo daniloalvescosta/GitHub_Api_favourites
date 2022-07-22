@@ -1,0 +1,6 @@
+<h1>Git Hub Search API</h1>
+
+<%= form_tag '/search' do %>
+  <%= text_field_tag :languages, params[:languages] %>
+  <%= submit_tag 'Search' %>
+<% end %>

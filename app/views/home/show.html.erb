@@ -1,0 +1,11 @@
+<%= render 'search_form' %>
+
+
+<%= @repository["name"] %> <br>
+<%= @repository["owner"]["login"] %> <br>
+<%= "#{@repository["created_at"]} || #{@repository["updated_at"]}" %> <br>
+<%= "#{@repository["forks"]} || #{@repository["watchers"]} || #{@repository["stargazers_count"]} " %> <br>
+<%= @repository["description"] %> <br>
+<%= @repository["clone_url"] %> <br>
+<%= @repository["homepage"] %> <br>
+
