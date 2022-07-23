@@ -1,17 +1,21 @@
 <%= render 'search_form' %>
 
 <h3>Results</h3>
+<% if @repositories == false %>
+  No results found.
+<% else %>
 
-<% @repositories["items"].map do |k, v| %>
-    <div>
-        <%= k["name"] %> <br>
-        <%= k["owner"]["login"] %> <br>
-        <%= k["description"] %> <br>
-        <%= k["url"] %> <br>
-        <%= link_to "See more..,", 
-         home_show_path(
-         :owner => k["owner"]["login"],
-         :repository_name => k["name"]) %>
-    </div>
-    <br>
+    <% @repositories["items"].map do |k, v| %>
+        <div>
+            <%= k["name"] %> <br>
+            <%= k["owner"]["login"] %> <br>
+            <%= k["description"] %> <br>
+            <%= k["url"] %> <br>
+            <%= link_to "See more..,", 
+            home_show_path(
+            :owner => k["owner"]["login"],
+            :repository_name => k["name"]) %>
+        </div>
+        <br>
+    <% end %>
 <% end %>

@@ -9,8 +9,14 @@ class GitHubApi
   end
 
   def get_repositories(languages)
+    @langs = ["ruby","java","python","c++","rust" ]
+    
+    if @langs.include?(languages)
     @options[:query] = { per_page: 20, q: languages.to_s, sort: 'stars', order: 'desc' }
     self.class.get('/search/repositories', @options)
+    else
+      return false
+    end
   end
 
   def get_repository(owner, repository_name)
