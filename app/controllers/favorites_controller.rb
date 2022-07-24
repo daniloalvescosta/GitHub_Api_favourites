@@ -16,6 +16,7 @@ class FavoritesController < ApplicationController
 
     def create 
         @repository = @github_api.get_repository(params[:owner], params[:repository_name])
+        
         @favorite = Favorite.new(
             name: @repository['name'],
             owner: @repository['owner']['login'],
@@ -31,8 +32,6 @@ class FavoritesController < ApplicationController
         
         if @favorite.save
             redirect_to favorites_path
-        else
-            render :new, status: :unprocessable_entity
         end
     end 
 
