@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     before_action :set_global_github_api
 
     def index
-        @favorite = Favorite.all
+        @favorites = Favorite.all
     end
 
     def new
