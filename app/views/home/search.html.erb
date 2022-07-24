@@ -15,6 +15,10 @@
             home_show_path(
             :owner => k["owner"]["login"],
             :repository_name => k["name"]) %>
+            <br>
+            <%= button_to "Add to favorites", favorites_path(
+            :owner => k["owner"]["login"],
+            :repository_name => k["name"]), method: :create %>
         </div>
         <br>
     <% end %>
