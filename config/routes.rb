@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/show', action: 'show', controller: 'home'
   post '/favorites', action: 'create', controller: 'favorites'
   get '/favorites', action: 'index', controller: 'favorites'
-  
-  resources :favorites, only: [:show, :destroy]
+  delete '/favorites/:id', action: 'destroy', controller: 'favorites'
+
+  resources :favorites, only: [:index, :show, :create, :destroy]
 end

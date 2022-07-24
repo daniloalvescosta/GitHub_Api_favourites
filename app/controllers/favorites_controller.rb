@@ -30,14 +30,16 @@ class FavoritesController < ApplicationController
         )
         
         if @favorite.save
-            redirect_to root_path
+            redirect_to favorites_path
         else
             render :new, status: :unprocessable_entity
         end
     end 
 
     def destroy
-
+        @favorite = Favorite.find(params[:id])
+        @favorite.destroy!
+        redirect_to favorites_path, status: :see_other
     end
 
     private

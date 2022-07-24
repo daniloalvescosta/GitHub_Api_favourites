@@ -9,3 +9,5 @@
 <%= @favorite.description %>  <br>
 <%= @favorite.clone_url %> <br>
 <%= @favorite.homepage %>  <br>
+
+<%= button_to 'Remove from Favorites', favorite_path(@favorite), method: :delete %>
