@@ -5,15 +5,14 @@ class GitHubApi
   base_uri 'https://api.github.com'
 
   def initialize
-    self.class.headers 'Authorization' => "token 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"
-    @options = {}
+   @options = {}
   end
 
   def get_repositories(languages)
     @langs = ["ruby","java","python","c++","rust" ]
     
     if @langs.include?(languages)
-    @options[:query] = { per_page: 20, q: languages.to_s, sort: 'stars', order: 'desc' }
+    @options[:query] = { per_page: 20, q: languages.to_s, sort: 'stars', order: 'desc', authorization: ENV['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'] }
     self.class.get('/search/repositories', @options)
     else
       return false
@@ -21,6 +20,7 @@ class GitHubApi
   end
 
   def get_repository(owner, repository_name)
-    self.class.get("/repos/#{owner}/#{repository_name}")
+    @options[:query] = { authorization: ENV['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'] }
+    self.class.get("/repos/#{owner}/#{repository_name}", @options)
   end
 end
