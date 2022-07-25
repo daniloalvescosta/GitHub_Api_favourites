@@ -1,24 +1,43 @@
-# README
+# **iCertus - Back-End Challenger**
+Projeto fullstack que visa o consumo de API do GitHub por meio da linguagem e do framwork Ruby On Rails, tendo a possibilidade de buscar e armazenar repositórios de até 5 linguagens:
+ - Ruby
+ - Java
+ - Python
+ - C++
+ - Rust
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Como Executar o Código
+Clone o repositório:
 
-Things you may want to cover:
+    git clone https://github.com/daniloalvescosta/iCertus-challenge.git
 
-* Ruby version
+Vá para a pasta criada:
 
-* System dependencies
+    cd iCertus-challenge
+Execute o Bundle
 
-* Configuration
+    Bundle Install
+    
+ Execute a migração do banco de dados:
+ 
 
-* Database creation
+    rails db:migrate
+Execute os testes para garantir que não há nada errado
 
-* Database initialization
+    rspec
+Caso tudo tenha dado certo, pode iniciar o projeto:
 
-* How to run the test suite
+    rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+## Detalhes do Projeto
 
-* Deployment instructions
+-   Ruby version: 3.1.2
+-   Rails version: 7.0.3
+-   Database: PostgreSQL
+-   Gems utilizadas: 'HttParty', 'rspec-rails' e 'sassc-rails'
+-   Framework Front-End: Bootstrap
 
-* ...
+## Screenshots
+![main page](https://github.com/daniloalvescosta/iCertus-challenge/blob/Master/app/assets/images/repository_shots/home.png)
+![list](https://github.com/daniloalvescosta/iCertus-challenge/blob/Master/app/assets/images/repository_shots/listagem.png)
+![show page](https://github.com/daniloalvescosta/iCertus-challenge/blob/Master/app/assets/images/repository_shots/show.png)
