@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @languages = params[:languages]
+    @languages = params[:languages].downcase
     @repositories = @github_api.get_repositories(@languages)
   end
 

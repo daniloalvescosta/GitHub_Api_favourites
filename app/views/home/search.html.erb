@@ -1,25 +1,36 @@
-<%= render 'search_form' %>
+<div class="container">
 
-<h3>Results</h3>
 <% if @repositories == false %>
-  No results found.
+  <div class="text-light text-center">
+    <h1>No results found</h1>
+    <h2>You should try searching for one of these languages:
+        <br>
+        Ruby, Java, Python, C++ or Rust
+    </h2>
+ 
+  </div>
 <% else %>
+<h3>Results</h3>
 
     <% @repositories["items"].map do |k, v| %>
-        <div>
-            <%= k["name"] %> <br>
-            <%= k["owner"]["login"] %> <br>
-            <%= k["description"] %> <br>
-            <%= k["url"] %> <br>
-            <%= link_to "See more..,", 
+        <div class="card">
+            <div class="card-body">
+            <h2><%= k["name"].capitalize %></h2><br>
+            <span class="text-muted">Author: </span>
+            <span class=""><%= k["owner"]["login"] %></span><br>
+            <span class="text-muted">Created at: </span>
+            <span class=""><%= k["created_at"] %></span><br>
+            <span class="text-muted">Stars: </span>
+            <span class=""><%= k["stargazers_count"] %></span><br>
+
+            <%= link_to "See more...", 
             home_show_path(
             :owner => k["owner"]["login"],
-            :repository_name => k["name"]) %>
+            :repository_name => k["name"]), class:"text-info text-decoration-none" %>
             <br>
-            <%= button_to "Add to favorites", favorites_path(
-            :owner => k["owner"]["login"],
-            :repository_name => k["name"]), method: :create %>
+            </div>
         </div>
         <br>
     <% end %>
 <% end %>
+</div>

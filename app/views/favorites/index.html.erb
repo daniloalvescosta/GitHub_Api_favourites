@@ -1,10 +1,31 @@
 
-<%= render 'home/search_form' %>
-<% @favorites.each do |f| %>
-    <%= f.name %>  <br>
-    <%= f.owner %>  <br>
-    <%= "#{f.created_at} 
-    | #{f.updated_at}" %> <br>
-    <%= link_to "Show Repository", favorite_path(f), method: :show %> <br>
-    <br>
-<% end %>
+<br>
+<div class="container">
+    
+    <% if @favorites == [] %>
+    <br><br>
+      <h1 class="text-center text-light">
+        You don't have any favorites yet...
+        <br>
+        :(
+      </h1>
+    <% else %>
+    
+        <% @favorites.each do |f| %>
+            <div class="card">
+                <div class="card-body">
+                <h2><%= f.name.capitalize %></h2><br>
+                <span class="text-muted">Author: </span>
+                <span class=""><%= f.owner %></span><br>
+                <span class="text-muted">Created at: </span>
+                <span class=""><%= f.created_at %></span><br>
+    
+                <%= link_to "Show Repository...", 
+                favorite_path(f), class:"text-info text-decoration-none" %>
+                <br>
+                </div>
+            </div>
+            <br>
+        <% end %>
+    <% end %>
+    </div>

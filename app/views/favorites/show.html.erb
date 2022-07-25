@@ -1,13 +1,60 @@
-<%= render 'home/search_form' %>
 
-<%= @favorite.name %>  <br>
-<%= @favorite.owner %>  <br>
-<%= "#{@favorite.created_at} | #{@favorite.updated_at}" %> <br>
-<%= @favorite.forks %>  <br>
-<%= @favorite.watchers %>  <br>
-<%= @favorite.stars %>  <br>
-<%= @favorite.description %>  <br>
-<%= @favorite.clone_url %> <br>
-<%= @favorite.homepage %>  <br>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+        <h2><%= @favorite.name.capitalize %> </h2><br>
+        <h3>Author: <%= @favorite.owner.capitalize %> </h3><br>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Updated at</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= @favorite.created_at %></td>
+                    <td><%= @favorite.updated_at %></td>
+                </tr>
+        </table>
 
-<%= button_to 'Remove from Favorites', favorite_path(@favorite), method: :delete %>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Forks</th>
+                    <th scope="col">Watchers</th>
+                    <th scope="col">Stars</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= @favorite.forks %></td>
+                    <td><%= @favorite.watchers %></td>
+                    <td><%= @favorite.stars %></td>
+                </tr>
+        </table>
+        
+        <h4>To clone this repository use:</h4>
+        <div class="card bg-secondary">
+            <div class="card-body">
+                <span class="text-light"><%= "git clone #{@favorite.clone_url}" %></span> <br>
+            </div>
+        </div>
+
+        <h4>Project Description:</h4>
+        <%= @favorite.description %>
+        <br><br>
+        <h4>Project Homepage:</h4>
+        <%= link_to "#{@favorite.homepage}", @favorite.homepage,
+        class: "text-info" %> <br>
+        <br>
+       
+        <%= button_to 'Remove from Favorites', 
+        favorite_path(@favorite),
+        method: :delete,
+        class: "btn btn-danger" %>
+        </div>
+    </div>
+    
+</div>

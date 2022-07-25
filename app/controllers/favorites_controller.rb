@@ -18,6 +18,7 @@ class FavoritesController < ApplicationController
         @repository = @github_api.get_repository(params[:owner], params[:repository_name])
         
         @favorite = Favorite.new(
+            id: @repository['id'],
             name: @repository['name'],
             owner: @repository['owner']['login'],
             created_at: @repository['created_at'],
