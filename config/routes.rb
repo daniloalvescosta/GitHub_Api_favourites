@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/favorites', action: 'index', controller: 'favorites'
   delete '/favorites/:id', action: 'destroy', controller: 'favorites'
 
-  resources :favorites, only: [:index, :show, :create, :destroy]
+  resources :favorites, only: %i[index show create destroy]
 end

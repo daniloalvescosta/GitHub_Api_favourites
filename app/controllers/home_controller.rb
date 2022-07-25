@@ -3,8 +3,7 @@
 class HomeController < ApplicationController
   before_action :set_global_github_api
 
-  def index
-  end
+  def index; end
 
   def search
     @languages = params[:languages].downcase
