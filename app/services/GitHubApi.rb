@@ -5,6 +5,7 @@ class GitHubApi
   base_uri 'https://api.github.com'
 
   def initialize
+    self.class.headers 'Authorization' => "token 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"
     @options = {}
   end
 
