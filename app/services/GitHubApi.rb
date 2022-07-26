@@ -12,7 +12,7 @@ class GitHubApi
     @langs = ['ruby', 'java', 'python', 'c++', 'rust']
 
     if @langs.include?(languages)
-    @options[:query] = { per_page: 20, q: languages.to_s, sort: 'stars', order: 'desc', authorization: ENV['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'] }
+    @options[:query] = { per_page: 20, q: languages.to_s, sort: 'stars', order: 'desc'}
     self.class.get('/search/repositories', @options)
     else
       false
@@ -20,7 +20,6 @@ class GitHubApi
   end
 
   def get_repository(owner, repository_name)
-    @options[:query] = { authorization: ENV['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'] }
-    self.class.get("/repos/#{owner}/#{repository_name}", @options)
+    self.class.get("/repos/#{owner}/#{repository_name}")
   end
 end
