@@ -14,14 +14,10 @@ Clone o repositório:
 Vá para a pasta criada:
 
     cd iCertus-challenge
-Execute o Bundle
+Execute o bin/setup
 
-    Bundle Install
+    bin/setup
     
- Execute a migração do banco de dados:
- 
-
-    rails db:migrate
 Execute os testes para garantir que não há nada errado
 
     rspec
