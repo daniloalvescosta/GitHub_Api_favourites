@@ -18,7 +18,7 @@
 
     <div class="input-group justify-content-center">
 
-    <%= form_tag '/search' do %>
+    <%= form_tag '/search', data: { turbo: false } do %>
       <div class="input-group">
         <%= text_field_tag :languages, params[:languages], {class: "form-control"} %>
         <%= submit_tag 'Search', class: "btn btn-primary" %>
