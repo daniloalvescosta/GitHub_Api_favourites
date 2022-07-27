@@ -2,11 +2,11 @@
 
 Rails.application.routes.draw do
   root 'home#index'
-  post '/search', action: 'search', controller: 'home'
-  get 'home/show', action: 'show', controller: 'home'
-  post '/favorites', action: 'create', controller: 'favorites'
-  get '/favorites', action: 'index', controller: 'favorites'
-  delete '/favorites/:id', action: 'destroy', controller: 'favorites'
+  post 'search', to: 'home#search'
+  get 'home', to: 'home#index'
+  resources :owners, only: %i[show], param: :name do
+    resources :repos, only: %i[show], param: :repository_name
+  end
 
-  resources :favorites, only: %i[index show create destroy]
+  resources :favorites, except: %i[new edit update]
 end

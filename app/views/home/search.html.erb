@@ -7,30 +7,30 @@
         <br>
         Ruby, Java, Python, C++ or Rust
     </h2>
- 
   </div>
 <% else %>
 <h3>Results</h3>
 
-    <% @repositories["items"].map do |k, v| %>
+    <% @repositories["items"].map do |key, _value| %>
         <div class="card">
             <div class="card-body">
-            <h2><%= k["name"].capitalize %></h2><br>
+            <h2><%= key["name"].capitalize %></h2><br>
             <span class="text-muted">Author: </span>
-            <span class=""><%= k["owner"]["login"] %></span><br>
+            <span class=""><%= key["owner"]["login"] %></span><br>
             <span class="text-muted">Created at: </span>
-            <span class=""><%= k["created_at"] %></span><br>
+            <span class=""><%= key["created_at"] %></span><br>
             <span class="text-muted">Stars: </span>
-            <span class=""><%= k["stargazers_count"] %></span><br>
+            <span class=""><%= key["stargazers_count"] %></span><br>
 
             <%= link_to "See more...", 
-            home_show_path(
-            :owner => k["owner"]["login"],
-            :repository_name => k["name"]), class:"text-info text-decoration-none" %>
+            owner_repo_path(
+            :owner_name => key["owner"]["login"],
+            :repository_name => key["name"]), class:"text-info text-decoration-none" %>
             <br>
             </div>
         </div>
         <br>
     <% end %>
+
 <% end %>
 </div>
