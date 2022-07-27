@@ -18,11 +18,5 @@ RSpec.describe HomeController, type: :controller do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      @repository = GitHubApi.new.get_repository('rails', 'rails')
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
+ 
 end
